@@ -26,8 +26,8 @@ def authenticate(db, email, password):
     if result:
         fields = ["id", "email", "password", "username"]
         return make_user(result)
-
-    return None
+    else:
+        return None
 
 def get_user(db, user_id):
     """Gets a user dictionary out of the database given an id"""

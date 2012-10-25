@@ -22,7 +22,8 @@ def save_task():
 
 @app.route("/tasks")
 def list_tasks():
-    tasks_from_db = model.get_tasks(g.db, None)
+    user_id = session.get("user_id", None)
+    tasks_from_db = model.get_tasks(g.db, user_id)
     return render_template("list_tasks.html", tasks=tasks_from_db)
 
 @app.route("/task/<int:id>", methods=["GET"])
@@ -43,6 +44,24 @@ def set_date():
 @app.route("/get_date")
 def get_date():
     return str(session['date'])
+
+@app.route("/login")
+def login():
+    return render_template("login.html")
+
+@app.route("/authenticate", methods=["POST"])
+def authenticate():
+    email = request.form['email']
+    password = request.form['password']
+    user_info = model.authenticate(g.db, email, password)
+    if user_info != None:
+        session['user_id'] = user_info['id']
+        return redirect("/tasks")
+    else:
+        return redirect("/login")
+        
+
+app.secret_key = 'secret_key'
 
 @app.teardown_request
 def close_db(e):
