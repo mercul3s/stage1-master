@@ -10,12 +10,16 @@
             <div class="tasklist">
                 <ul>
                 {% for task in tasks %}
-                <li><a href="/task/{{task['id']}}">Task {{ task['id'] }}</a>: {{ task['title'] }}{% if task['completed_at'] %} &mdash; Completed{% endif %}</li>
+                <li><a href="{{ url_for('view_task', id=task['id']) }}"> Task {{ task['id'] }}</a>: 
+                    {{ task['title'] }}       
+                    {% if task['completed_at'] %} &mdash; Completed
+                    {% endif %}
+                </li>
                 {% endfor %}
                 </ul>
             </div>
-
-            <form method="POST" action="/save_task">
+            <form action="{{ url_for("save_task") }}" method="POST">    
+        <!--     <form method="POST" action="/save_task">  -->
                 <label for="title">New Task Item
                 <input type="text" name="title" id="title"></input>
                 <input type="submit"></input>
