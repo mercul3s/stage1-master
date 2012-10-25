@@ -74,8 +74,15 @@ def get_tasks(db, user_id=None):
     for row in rows:
         task = make_task(row)
         tasks.append(task)
-
     return tasks
+
+def delete_task(db, task_id):
+    c=db.cursor()
+    query="""DELETE FROM Tasks WHERE id = ?"""
+    c.execute(query,(task_id, ))
+    db.commit()
+    print "Task ID is: ", task_id
+    #return 'Task Deleted'
 
 def get_task(db, task_id):
     """Gets a single task, given its id. Returns a dictionary of the task data."""

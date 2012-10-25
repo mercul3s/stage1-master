@@ -17,7 +17,8 @@ def index():
 @app.route("/save_task", methods=["POST"])
 def save_task():
     title = request.form['title']
-    model.new_task(g.db, title)
+    user_id = session.get("user_id", None)
+    model.new_task(g.db, title, user_id)
     return redirect("/tasks")
 
 @app.route("/tasks")
@@ -34,6 +35,11 @@ def view_task(id):
 @app.route("/task/<int:id>", methods=["POST"])
 def complete_task(id):
     model.complete_task(g.db, id)
+    return redirect("/tasks")
+
+@app.route("/delete_task/<int:id>", methods=["POST"])
+def delete_task(id):
+    model.delete_task(g.db, id)
     return redirect("/tasks")
 
 @app.route("/set_date")
@@ -60,8 +66,20 @@ def authenticate():
     else:
         return redirect("/login")
         
+@app.route("/sign_up")
+def sign_up():
+    return render_template("signup_form.html")
 
-app.secret_key = 'secret_key'
+@app.route("/new_user", methods=["POST"])
+def add_new_user():
+    email = request.form['email']
+    password = request.form['password']
+    name = request.form['name']
+    user_id = model.new_user(g.db, email, password, name)
+    session['user_id'] = user_id
+    return redirect("/tasks")
+
+app.secret_key = 'alkfjaw39nv21F5.24;55./966339fhde'
 
 @app.teardown_request
 def close_db(e):

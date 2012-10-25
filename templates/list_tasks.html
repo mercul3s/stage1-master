@@ -2,15 +2,15 @@
 {% block body %}
 <h1>Task List</h1>
 <div class="tasklist">
-    <ul>
+    <ol>
     {% for task in tasks %}
-    <li><a href="{{ url_for('view_task', id=task['id']) }}"> Task {{ task['id'] }}</a>: 
-        {{ task['title'] }}       
+    <li><a href="{{ url_for('view_task', id=task['id']) }}">
+        {{ task['title'] }}</a>       
         {% if task['completed_at'] %} &mdash; Completed
         {% endif %}
     </li>
     {% endfor %}
-    </ul>
+    </ol>
 </div>
     <form action="{{ url_for("save_task") }}" method="POST">    
         <label for="title">New Task Item

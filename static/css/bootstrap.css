@@ -109,8 +109,9 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 13px;
   line-height: 18px;
-  color: #333333;
-  background-color: #ffffff;
+  background-color:#C0C0C0;
+  background-image: url('../img/retina_wood.png');
+  background-repeat: repeat;
 }
 a {
   color: #0088cc;
@@ -259,9 +260,10 @@ a:hover {
   width: 99.99999998999999%;
 }
 .container {
-  width: 940px;
+  width: 300px;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 100px;
   *zoom: 1;
 }
 .container:before, .container:after {
