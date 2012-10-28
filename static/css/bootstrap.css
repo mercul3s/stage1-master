@@ -58,6 +58,18 @@ img {
   border: 0;
   -ms-interpolation-mode: bicubic;
 }
+
+#cruise {
+  margin: auto;
+  padding: 10px;
+}
+
+#login-link {
+  padding: 10px;
+  font-size: 20px;
+  margin-top: 15px;
+}
+
 button,
 input,
 select,
@@ -114,11 +126,11 @@ body {
   background-repeat: repeat;
 }
 a {
-  color: #0088cc;
+  color: #94667A;
   text-decoration: none;
 }
 a:hover {
-  color: #005580;
+  color: #78485D;
   text-decoration: underline;
 }
 .row {
@@ -260,11 +272,12 @@ a:hover {
   width: 99.99999998999999%;
 }
 .container {
-  width: 300px;
+  width: 400px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 100px;
   *zoom: 1;
+  padding: 10px;
 }
 .container:before, .container:after {
   display: table;

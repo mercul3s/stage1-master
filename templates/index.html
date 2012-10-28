@@ -1,5 +1,8 @@
 {% extends "layout.html" %}
 {% block body %}
-<h1>Tipsy - A lightweight tasklist</h1>
-<a href="{{ url_for('login') }}">Login Page</a>
+<h1>Need help managing your To-Do list? Try Tipsy!</h1>
+<div id="cruise">
+<img src="../static/img/cruise-ship.jpg" alt="cruise ship image" />
+</div>
+<a href="{{ url_for('login') }}" id="login-link">Login Page</a>
 {% endblock %}

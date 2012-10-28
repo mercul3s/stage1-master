@@ -56,6 +56,7 @@ def login():
     return render_template("login.html")
 
 @app.route("/authenticate", methods=["POST"])
+
 def authenticate():
     email = request.form['email']
     password = request.form['password']
